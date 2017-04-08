@@ -8,10 +8,10 @@ import psycopg2
 
 ### Datos de Configuracion de Conexion ###
 # RECUERDE MODIFICAR LOS PARAMETROS DE CONEXION
-database='database'
-host='localhost'
+database='dynamica'
+host='172.17.0.3'
 user='postgres'
-password='password'
+password='123456'
 
 ########################################################################
 listbs = ['base_language_export',
@@ -128,7 +128,74 @@ listbs = ['base_language_export',
 'wkf_transition',
 'wkf_triggers',
 'wkf_witm_trans',
-'wkf_workitem']
+'wkf_workitem',
+'base_import_import',
+'base_import_import_audit_id_seq',
+'base_import_tests_models_char',
+'base_import_tests_models_char_audit_id_seq',
+'base_import_tests_models_char_noreadonly',
+'base_import_tests_models_char_noreadonly_audit_id_seq',
+'base_import_tests_models_char_readonly',
+'base_import_tests_models_char_readonly_audit_id_seq',
+'base_import_tests_models_char_required',
+'base_import_tests_models_char_required_audit_id_seq',
+'base_import_tests_models_char_states',
+'base_import_tests_models_char_states_audit_id_seq',
+'base_import_tests_models_char_stillreadonly',
+'base_import_tests_models_char_stillreadonly_audit_id_seq',
+'base_import_tests_models_m2o',
+'base_import_tests_models_m2o_audit_id_seq',
+'base_import_tests_models_m2o_related',
+'base_import_tests_models_m2o_related_audit_id_seq',
+'base_import_tests_models_m2o_required',
+'base_import_tests_models_m2o_required_audit_id_seq',
+'base_import_tests_models_m2o_required_related',
+'base_import_tests_models_m2o_required_related_audit_id_seq',
+'base_import_tests_models_o2m',
+'base_import_tests_models_o2m_audit_id_seq',
+'base_import_tests_models_o2m_child',
+'base_import_tests_models_o2m_child_audit_id_seq',
+'base_import_tests_models_preview',
+'base_import_tests_models_preview_audit_id_seq',
+'bus_bus',
+'bus_bus_audit_id_seq',
+'change_password_user',
+'change_password_user_audit_id_seq',
+'change_password_wizard',
+'change_password_wizard_audit_id_seq',
+'im_chat_message',
+'im_chat_message_audit_id_seq',
+'im_chat_presence',
+'im_chat_presence_audit_id_seq',
+'im_chat_session',
+'im_chat_session_audit_id_seq',
+'im_chat_session_res_users_rel',
+'im_chat_session_res_users_rel_audit_id_seq',
+'ir_config_parameter_groups_rel',
+'ir_config_parameter_groups_rel_audit_id_seq',
+'ir_fields_converter',
+'ir_fields_converter_audit_id_seq',
+'ir_logging',
+'ir_logging_audit_id_seq',
+'ir_model_constraint',
+'ir_model_constraint_audit_id_seq',
+'ir_model_relation',
+'ir_model_relation_audit_id_seq',
+'ir_ui_view_group_rel',
+'ir_ui_view_group_rel_audit_id_seq',
+'report',
+'report_audit_id_seq',
+'res_config_settings',
+'res_config_settings_audit_id_seq',
+'res_country_group',
+'res_country_group_audit_id_seq',
+'res_country_res_country_group_rel',
+'res_country_res_country_group_rel_audit_id_seq',
+'res_font',
+'res_font_audit_id_seq',
+'res_partner_res_partner_category_rel',
+'res_partner_res_partner_category_rel_audit_id_seq',
+]
 omite = ''
 for listb in listbs:
     exluye = " AND table_name<>'%s'" % listb
@@ -148,7 +215,7 @@ sTrigger = open('script_trigger_auditoria.sql', 'w')
 sBash = open('audiBash.sh', 'w')
 
 sAuditable.write("""CREATE DATABASE aud_%s
-  WITH OWNER = openerp
+  WITH OWNER = odoo
        ENCODING = 'UTF8'
        TABLESPACE = pg_default
        LC_COLLATE = 'es_VE.UTF-8'
