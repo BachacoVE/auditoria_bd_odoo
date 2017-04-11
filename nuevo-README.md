@@ -1,6 +1,4 @@
-Manual para hacer funcionar el script de auditoria
-
-#Instancias docker
+#Manual para hacer funcionar el script de auditoria con Instancias docker
 
 ## preparo las carpetas que serán montadas como volumenes
 
@@ -48,7 +46,7 @@ en mi caso instalo fleet (Flota Vehicular)
 
 Creo un par de registros
 
-# Asigno una contraseña al usuario postgres
+## Asigno una contraseña al usuario postgres
 
 Ingreso al contenedor de postgres con el usuario root
 
@@ -87,13 +85,13 @@ Para obtener la IP del contenedor db9_aud ejecutamos el siguiente comando:
 
 **Nota para usuarios no Dockerizados:** probablemente tu IP es `localhost`
 
-# Entramos al contenedor de odoo y desde allí ejecutamos el script
+## Entramos al contenedor de odoo y desde allí ejecutamos el script
 
 `sudo docker exec -it -u 0 odoo9_aud bash`
 
 `python /home/aud/Scripts/script_auditoria_v2.4.py`
 
-# Verificamos que ahora tenemos 3 archivos nuevos
+## Verificamos que ahora tenemos 3 archivos nuevos
 
 * audiBash.sh
 * script_bd_auditoria.sql
@@ -101,20 +99,20 @@ Para obtener la IP del contenedor db9_aud ejecutamos el siguiente comando:
 
 Para este ejercicio ignoraremos el archivo `audiBash.sh`
 
-#Creamos la base de datos aud_prueba
+## Creamos la base de datos aud_prueba
 Esta será nuestra base de datos de auditoría. Es necesario crearla fuera del Script (Revisar, puede mejorarse)
 
-psql -h 172.17.0.2 -U postgres -c "CREATE DATABASE aud_prueba;"
+`psql -h 172.17.0.2 -U postgres -c "CREATE DATABASE aud_prueba;"`
 
-#Ejecutamos el archivo de script_bd_auditoria.sql
+## Ejecutamos el archivo de script_bd_auditoria.sql
 
 Aún conectados al conectedor db9_aud, ejecutamos:
 
-psql -h 172.17.0.2 -U postgres -f script_bd_auditoria.sql
+`psql -h 172.17.0.2 -U postgres -f script_bd_auditoria.sql`
 
 (Revisar por qué da algunas errores de sintaxis en la version 9.6)
 
-#Ejecutamos el archivo script_trigger_auditoria.sql
+## Ejecutamos el archivo script_trigger_auditoria.sql
 
 `psql -h 172.17.0.2 -U postgres -f script_trigger_auditoria.sql`
 
