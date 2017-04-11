@@ -1,7 +1,7 @@
-#Contributors
+# Contributors
 
 * Joan Espinoza
-* Victor Inojosa
+* **[Victor Inojosa](https://github.com/vijoin)**
 * Moises García
 * Jessika Colina
-* Daniel Aguilar
+* **[Daniel Aguilar](https://github.com/luisdad2002)**
